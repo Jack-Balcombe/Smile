@@ -1,32 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <title>Smile Cafe | Home</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalise/8.0.1/normalise.css"/>
-    <link href="{{url_for('static', filename='smile.css') }}" rel="stylesheet">
-</head>
+{%block tabheader%} Home {% endblock %}
 
-<body>
-<div class="container">
-    <header>
-        <h1>Smile Cafe</h1>
-        <h2>Home</h2>
-    </header>
-    <nav>
-        <a href="/">Home</a> &#8226;
-        <a href="/menu">Menu</a> &#8226;
-        <a href="/contact">Contact</a>
-    </nav>
-    <main>
-        <!-- Some page content will go here -->
-    </main>
-</div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="js/script.js"></script>
-</body>
+{% block pageheading %} Home {% endblock %}
 
-</html>
+{% block main %}
+<!-- Some page content will go here -->
+{% endblock %}
