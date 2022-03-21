@@ -64,4 +64,13 @@ def render_login_page():
     return render_template("login.html")
 
 
+@app.route('/signup')
+def render_signup_page():
+    """
+
+    :return: TBA
+    """
+    return render_template("signup.html")
+
+
 app.run(host='0.0.0.0')
