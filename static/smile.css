@@ -128,7 +128,7 @@ a, a:visited {
 }
 
 .myform {
-    width: 80%;
+    width: 60%;
     margin: auto;
     padding-top: 3rem;
 }
@@ -138,13 +138,13 @@ a, a:visited {
 }
 
 .form-label {
-    width: 30%;
+    width: 20%;
     float: left;
     padding: 0.3rem;
 }
 
 .form-element {
-    width: 70%;
+    width: 80%;
     float: left;
 }
 
