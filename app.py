@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, session
 import sqlite3
 from sqlite3 import Error
 
-DB_NAME = "smile.db"
+DB_NAME = "C:/Users/18062/PycharmProjects/Smile/smile.db"
 
 app = Flask(__name__)
 

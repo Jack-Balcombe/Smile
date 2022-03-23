@@ -5,6 +5,7 @@
 {% block pageheading %} Menu {% endblock %}
 
 {% block main %}
+<div id="products">
 {% for product in products %}
         <div class = "product-box">
             <h3> {{ product[0] }}</h3>
@@ -15,4 +16,5 @@
         </div>
 
         {% endfor %}
+</div>
 {% endblock %}
