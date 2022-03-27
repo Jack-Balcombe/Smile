@@ -1,10 +1,14 @@
 from flask import Flask, render_template, request, session, redirect
 import sqlite3
 from sqlite3 import Error
+from flask_bcrypt import Bcrypt
 
 DB_NAME = "C:/Users/18062/PycharmProjects/Smile/smile.db"
 
 app = Flask(__name__)
+bcrypt = Bcrypt(app)
+app.secret_key = "neveraskusaboutfrownbrew"
+
 
 # creates a connection to the database
 # inputs: database file
@@ -25,7 +29,7 @@ def render_homepage():
 
     :return: TBA
     """
-    return render_template('home.html')
+    return render_template('home.html', logged_in=is_logged_in())
 
 
 @app.route('/menu')
@@ -43,7 +47,7 @@ def render_menu_page():
     product_list = cur.fetchall()
     con.close()
 
-    return render_template('menu.html', products=product_list)
+    return render_template('menu.html', products=product_list, logged_in=is_logged_in())
 
 
 @app.route('/contact')
@@ -52,7 +56,7 @@ def render_contact_page():
 
     :return: TBA
     """
-    return render_template('contact.html')
+    return render_template('contact.html', logged_in=is_logged_in())
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -99,8 +103,8 @@ def render_signup_page():
     """
     if request.method == 'POST':
         print(request.form)
-        fname = request.form.get('fname').strip().lower()
-        lname = request.form.get('lname').strip().lower()
+        fname = request.form.get('fname').strip().title()
+        lname = request.form.get('lname').strip().title()
         email = request.form.get('email').strip().lower()
         password = request.form.get('pass')
         password2 = request.form.get('pass2')
@@ -125,6 +129,18 @@ def render_signup_page():
         con.close()
 
     return render_template("signup.html")
+
+
+def is_logged_in():
+    """
+
+    :return: TBA
+    """
+    if session.get("email") is None:
+        print("not logged in")
+        return False
+    print("logged in")
+    return True
 
 
 app.run(host='0.0.0.0')
