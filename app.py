@@ -127,6 +127,7 @@ def render_signup_page():
             return redirect('/signup?error=email+is+already+in+use')
         con.commit()
         con.close()
+        return redirect('/login')
 
     return render_template("signup.html")
 
