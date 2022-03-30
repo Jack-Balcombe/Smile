@@ -95,6 +95,18 @@ def render_login_page():
     return render_template('login.html', logged_in=is_logged_in())
 
 
+@app.route('/logout')
+def log_out():
+    """
+
+    :return: TBA
+    """
+    print(list(session.keys()))
+    [session.pop(key) for key in list(session.keys())]
+    print(list(session.keys()))
+    return redirect('/?message=See+you+soon')
+
+
 @app.route('/signup', methods=['GET', 'POST'])
 def render_signup_page():
     """
@@ -140,8 +152,9 @@ def is_logged_in():
     if session.get("email") is None:
         print("not logged in")
         return False
-    print("logged in")
-    return True
+    else:
+        print("logged in")
+        return True
 
 
 app.run(host='0.0.0.0')
