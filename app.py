@@ -1,3 +1,5 @@
+# TO DO: Add to app.py so can't access login when logged in etc.
+
 from flask import Flask, render_template, request, session, redirect
 import sqlite3
 from sqlite3 import Error

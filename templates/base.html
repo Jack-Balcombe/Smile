@@ -20,10 +20,18 @@
         <a href="/">Home</a> &#8226;
         <a href="/menu">Menu</a> &#8226;
         <a href="/contact">Contact</a> &#8226;
-        <a href="/login">Log in</a> &#8226;
+        {% if logged_in %}
         <a href="/logout">Log out</a>
+        {% else %}
+        <a href="/login">Log in</a>
+        <a href="/signup">Sign up</a>
+        {% endif %}
     </nav>
     <main>
+        {% if logged_in %}
+            <strong> Hello, {{ session.first_name }}</strong>
+        {% endif %}
+
         {% block main %}
         {% endblock %}
     </main>
