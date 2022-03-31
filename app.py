@@ -1,5 +1,3 @@
-# TO DO: Add to app.py so can't access login when logged in etc.
-
 from flask import Flask, render_template, request, session, redirect
 import sqlite3
 from sqlite3 import Error
@@ -67,7 +65,9 @@ def render_login_page():
 
     :return: TBA
     """
-    if request.method == 'POST':
+    if is_logged_in():
+        return redirect("/?error=Already+logged+in")
+    elif request.method == 'POST':
         print(request.form)
         email = request.form.get('email').strip().lower()
         password = request.form.get('password').strip()
@@ -103,6 +103,8 @@ def log_out():
 
     :return: TBA
     """
+    if not is_logged_in():
+        return redirect('/?error=Already+logged+out')
     print(list(session.keys()))
     [session.pop(key) for key in list(session.keys())]
     print(list(session.keys()))
@@ -115,7 +117,9 @@ def render_signup_page():
 
     :return: TBA
     """
-    if request.method == 'POST':
+    if is_logged_in():
+        return redirect("/?error=User+already+has+an+account")
+    elif request.method == 'POST':
         print(request.form)
         fname = request.form.get('fname').strip().title()
         lname = request.form.get('lname').strip().title()
