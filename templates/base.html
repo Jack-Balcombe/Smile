@@ -12,21 +12,21 @@
 
 <body>
 <div class="container">
+    <nav>
+        <a href="/">Home</a>
+        <a href="/menu">Menu</a>
+        <a href="/contact">Contact</a>
+        {% if logged_in %}
+        <a href="/logout">Log out</a>
+        {% else %}
+        <a href="/login">Log in</a>
+        <a href="/signup">Sign up</a>
+        {% endif %}
+    </nav>
     <header>
         <h1>Smile Cafe</h1>
         <h2>{% block pageheading %} {% endblock %}</h2>
     </header>
-    <nav>
-        <a href="/">Home</a> &#8226;
-        <a href="/menu">Menu</a> &#8226;
-        <a href="/contact">Contact</a> &#8226;
-        {% if logged_in %}
-        <a href="/logout">Log out</a>
-        {% else %}
-        <a href="/login">Log in</a> &#8226;
-        <a href="/signup">Sign up</a>
-        {% endif %}
-    </nav>
     <main>
         {% if logged_in %}
             <strong> Hello, {{ session.first_name }}</strong>
